@@ -7,10 +7,15 @@ class ArticlesController < ApplicationController
 
     def show
       @article = Article.find(params[:id])
+
       end
 
     def new
       @article = Article.new
+      @comment = Comment.new
+      @comment.article_id = @article.id
+      redirect_to article_path(@comment.article)
+
       end
 
     def create
